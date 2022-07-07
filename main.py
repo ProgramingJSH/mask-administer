@@ -8,6 +8,15 @@
 # 각각의 기능은 함수로 나누고 메인함수에 모아보기.
 # 너무 큰 파일은 그냥 나눠서 한 다음 임포트해서 쓰자.
 
+from multiprocessing.dummy import current_process
+
+
+masksNum = 0
+maskUser = 0
+maskChange = 0
+currentTime = 0
+
+
 def startMenu():
     print("*"*50)
     print("어서오세요! 마스크 종합관리 시스템입니다.")

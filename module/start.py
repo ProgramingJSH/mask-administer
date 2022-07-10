@@ -1,3 +1,6 @@
+from datetime import *
+
+
 def intInput():
     while True:
         num = input("> ")
@@ -15,27 +18,12 @@ def setting():
     print("마스크를 며칠에 한 번씩 교체할지 입력해주세요!")
     changeDue = intInput()
 
-    return {masks, user, changeDue}
+    currentTime = date.today()
+
+    lastChange = currentTime
+
+    return [masks, user, changeDue, currentTime, lastChange]
 
 
 def load():
     pass
-
-
-def startMenu():
-    print("*"*50)
-    print("어서오세요! 마스크 종합관리 시스템입니다.")
-    print("숫자를 입력해주세요!")
-    print()
-    print("1. 시작하기")
-    print("2. 로드")
-    print()
-    print("*"*50)
-
-
-def startSelect():
-    SelectNum = input("> ")
-    if SelectNum == "1":
-        setting()
-    elif SelectNum == "2":
-        load()

@@ -1,9 +1,9 @@
-from turtle import delay
 from module.start import *
 from module.ReadInput import *
+from module.updateData import updateData
+
 from datetime import *
 
-from updateData import updateData
 
 data = [
     # 전부 int임

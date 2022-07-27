@@ -4,7 +4,6 @@ import select
 import sys
 from datetime import *
 
-
 # int임
 # masksNum = data[0]      # 마스크 잔여량
 # maskUser = data[1]      # 마스크 사용자수
@@ -28,17 +27,17 @@ def readInput(timeOut):     # 시간제한이 있는 input함수
 
 def updateData(data):       # 날짜 데이터를 업데이트합니다.
 
-    masksNum = data[0]              # 마스크 잔여량
-    maskUser = data[1]              # 마스크 사용자수
-    changeDue = data[2]             # 마스크 교체주기
+    masksNum = data[0]                  # 마스크 잔여량
+    maskUser = data[1]                  # 마스크 사용자수
+    changeDue = data[2]                 # 마스크 교체주기
 
-    lastChange = data[3]            # 마지막으로 교체한 날짜
-    currentTime = date.today()      # 현재 날짜
-    changeDate = lastChange + timedelta(days=changeDue)
+    lastChange = data[3]                # 마지막으로 교체한 날짜
+    currentTime = date.today()          # 현재 날짜
 
-    if changeDate == currentTime:   # 교체일이면
-        lastChange = currentTime    # 날짜 바꾸기
-        masksNum = masksNum - maskUser
+    while changeDate <= currentTime:    # 교체일이거나 교체일이 지났으면
+        lastChange = changeDate         # 날짜 바꾸기
+        masksNum -= maskUser            # 마스크 개수 줄이기
+        changeDate += timedelta(days=changeDue)  # 앞으로 바꿀 날짜
 
     return [masksNum, maskUser, changeDue, lastChange, currentTime, changeDate]
 
@@ -65,3 +64,11 @@ def setting():              # 초기 설정값을 입력받아 반환합니다.
     lastChange = currentTime
 
     return [masks, user, changeDue, lastChange, currentTime]
+
+
+def buyingMask():
+    pass
+    print("구매하신 마스크의 수량을 입력하세요!")
+    num = intInput()
+    print("넵 알겠습니다!")
+    return num

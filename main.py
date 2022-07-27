@@ -35,7 +35,7 @@ def printMainMenu():
     print("*"*50)
     print("원하시는 기능을 선택해주세요!")
     print()
-    print("1. 마스크 구매하기")
+    print("1. 마스크를 더 구매했다면?")
     print("2. 설정")
     print("3. 나가기")
     print()
@@ -62,7 +62,7 @@ def mainSelection(SelectNum):
 
     if SelectNum == "1":
         # 마스크 구매
-        pass
+        data[0] += buyingMask()
     elif SelectNum == "2":
         # 설정
         maskStatus()
@@ -88,11 +88,14 @@ def maskStatus():
     print("<{}>".format(currentTime))
     if currentTime == lastChange:
         print("<!!!! 오늘은 마스크 바꾸는 날입니다 !!!!>")
-    print("현재 마스크 재고:\t", masksNum)
-    print("마스크 사용자수:\t", maskUser)
+    print((masksNum // maskUser) * changeDue)
+    if (masksNum // maskUser) * changeDue <= 7:
+        print("<!!!! {}일 뒤 마스크가 바닥납니다 !!!!>".format(
+            (masksNum // maskUser) * changeDue))
+    print("현재 마스크 재고:\t {}개".format(masksNum))
+    print("마스크 사용자수:\t {}명".format(maskUser))
 
     print("마지막으로 마스크를 바꾼 날짜:\t", lastChange)
-
     print("다음 마스크 교체날짜:\t\t", changeDate)
     print("마스크 교체 주기:\t {}일".format(changeDue))
 

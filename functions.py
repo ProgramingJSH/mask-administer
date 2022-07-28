@@ -33,6 +33,7 @@ def updateData(data):       # 날짜 데이터를 업데이트합니다.
 
     lastChange = data[3]                # 마지막으로 교체한 날짜
     currentTime = date.today()          # 현재 날짜
+    changeDate = lastChange + timedelta(days=changeDue)  # 앞으로 교체할 날짜
 
     while changeDate <= currentTime:    # 교체일이거나 교체일이 지났으면
         lastChange = changeDate         # 날짜 바꾸기

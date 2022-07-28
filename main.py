@@ -69,7 +69,6 @@ def mainSelection(SelectNum):
         data = setting()
     elif SelectNum == "3":
         # 나가기
-        print(data)
         return "quit"
     else:
         print("선택지의 숫자를 입력해주세요!")
@@ -103,9 +102,9 @@ def maskStatus():
 def load():
     global data
 
-    # if not os.path.isfile("maskData.txt"):
-    #     print("아직 저장된 데이터가 없습니다!")
-    #     return "noData"
+    if not os.path.isfile("maskData.txt"):
+        print("아직 저장된 데이터가 없습니다!")
+        return "noData"
 
     with open("maskData.dat", "rb") as file:
         data = pickle.load(file)
